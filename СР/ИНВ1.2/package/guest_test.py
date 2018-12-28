@@ -5,15 +5,18 @@ import os
 
 class TestCase(unittest.TestCase):
 
+    # существует ли файл
     def test_guest_book_file_exists(self):
         self.assertTrue(os.path.isfile("./book.json"))
-
+    
+    # верный ли тип данных
+    def test_guest_book_guests_type(self):
+        self.assertTrue(isinstance(guestBook.GuestBook().guests, list))
+    
     def test_guest_book_type(self):
         self.assertTrue(isinstance(guestBook.GuestBook(), guestBook.GuestBook))
 
-    def test_guest_book_guests_type(self):
-        self.assertTrue(isinstance(guestBook.GuestBook().guests, list))
-
+    # работает ли удаление и добавление
     def test_guest_book_guests_add_remove(self):
         book = guestBook.GuestBook()
         book.add("Test1")
